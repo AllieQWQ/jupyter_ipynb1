@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 下面为 hadoop-env.sh 配置文件 在底部添加如下内容-->
+    <value>export JAVA_HOME=/opt/module/jdk</value>
+    <value>export HADOOP_HOME=/opt/module/hadoop</value>
+
+    <!--下面为 core-site.xml 的配置文件 需要背住-->
+    <configuration>
+      <property>
+        <name>hadoop.tmp.dir</name>
+        <value>file:/opt/module/hadoop/tmp</value>
+      </property>
+
+      <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://master:10000</value>
+      </property>
+    </configuration>
+
+    <!--下面为 hdfs-site.xml 的配置文件-->
+    <configuration>
+      <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+      </property>
+
+      <property>
+        <name>dfs.namenode.secondary.http-address</name>
+        <value>slave1:50090</value>
+      </property>
+    </configuration>
+
+    <!--下面是 mapred-site.xml 的配置文件-->
+    <configuration>
+      <prperty>
+        <name>mapredeuce.framework.name</name>
+        <value>yarn</value>
+      </prperty>
+    </configuration>
+  </body>
+</html>
